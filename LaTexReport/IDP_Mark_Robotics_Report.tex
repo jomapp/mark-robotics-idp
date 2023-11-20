@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTexThesisTemplate, Author: Johannes Muenichsdorfer and Technical University of Munich (TUM)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./Ressourcen/Praeambel.tex} % !!! DO NOT REMOVE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\Topic}{IDP Report - Mark Robotics - Precision Line Marking Detection} % !!! ADD YOUR TOPIC HERE !!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./Ressourcen/Anfang.tex} % !!! DO NOT REMOVE !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{todonotes} % !!! ONLY TEMPORARY PACKAGES !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Report Interdisciplinary Project in an Application Subject (IDP): "Exploring Precision Line Marking Detection for Mobile Robot Navigation"} % !!! ADD YOUR TITLE HERE !!!
+\author{Johannes Imre Rupert Muenichsdorfer} % !!! ADD YOUR NAME HERE !!!
+\date{13.10.2022} % !!! ADD DATE HERE !!!
+
+\setcounter{page}{3} % Resets the page counter to allow additional cover pages
+
+\begin{center}
+{\fontsize{18pt}{27pt}\selectfont Acknowledgments}
+\end{center}
+
+\tableofcontents % Table of contents
+
+\chapter{Abstract}
+\label{ch:abstract}
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+Parking lots, public transport, bicycle lanes \textemdash{} we are guided by a verity of different \textbf{line markings} everyday in our lives. Nevertheless this domain and companies involved in this sector lack two aspects crucial to our today's society \textemdash{} digitalization and automatization. 
+
+To solve this issue and given the existing but outdated tools in the marking industry, the unhealthy working conditions, and the worker shortage in the market, we, \emph{Mark-Robotics}, strive to develop the \textbf{first autonomous ground line marking robot for airports}.
+
+This \emph{Interdisciplinary Project in an Application Subject} (IDP) will therefore shed some light in the, until now, quite poorly explored domain of airport taxiway ground line markings in respect to mobile robot navigation. We will discuss how accurate camera-based line detection can be used to navigate a robot precisely and see on a pre-prototype how line detection can be implemented with the help of \emph{deep learning} and a \emph{convolutional neural network} (CNN). This technology lays the ground work for the development of an autonomous line marking robot for airports. In particular \emph{line detection}, or more precisely detecting partially erased lines, is crucial, as 90\% of the line marking work on airports is repainting of already existing lines, which must be done up to twice a year. 
+
+\section{Problem Statement}
+\label{sec:introduction-problem-statement}
+
+Toxic paints, high planning effort, required accuracy under time pressure, and predominantly night shifts make line marking highly complicated and unattractive. At airports, 90\% of the work is repainting of already existing lines, which must be done up to twice a year. To improve on this, and in order to digitize the marking industry a first step towards the development of an autonomous line marking robot should be made with this \emph{Interdisciplinary Project in an Application Subject} (IDP).
+
+While developing such a line marking robot, accurate navigation is a really challenging task. For this reason an approach for \textbf{camera-based line detection} will be discussed, which is needed to navigate the line marking robot precisely along lines that require to be repainted.
+
+\newpage
+
+\section{Motivation}
+\label{sec:introduction-motivation}
+
+Accurate line detection for (partially erased) ground line markings, is a crucial element towards the development of an autonomous line marking robot for airports. This \emph{Interdisciplinary Project in an Application Subject} (IDP) is therefore easily motivated by the fact that any founding during this project might influence and contribute towards the further development of the robot. \todo{Continue herer!}
+
+\section{Requirements}
+\label{sec:introduction-requirements}
+
+As for the requirements of this \emph{Interdisciplinary Project in an Application Subject} (IDP), and more specifically, the goal to develop a pre-prototype for accurate line detection, we can differentiate them into two main parts. While there are \emph{hard} constraints that should be solved, there are also \emph{soft} constraints, which are nice to have, but optional. The following table~\ref{table:requirements-idp} visualizes all requirements in a structured manner.
+
+\begin{table}[ht!]
+	\fontsize{9pt}{13pt}\selectfont
+	\vspace{2pt}
+	\begin{tabularx}{\textwidth}{| @{\hspace{5pt}} M | @{\hspace{5pt}} M |}
+		\hline
+		\textcolor{BrickRed}{\textbf{Mandatory Requirements}} & \textcolor{ForestGreen}{\textbf{Optional Requirements}}\\
+		\hline
+		\hline
+		\textcolor{BrickRed}{$\bullet$} Reliable \textbf{detection} of \textbf{ground line markings} & \textcolor{ForestGreen}{$\bullet$} Detection of \emph{partially erased} ground line markings\\
+		\hline
+		\textcolor{BrickRed}{$\bullet$} \textbf{Detection} is based on a computer vision approach & 
+		\textcolor{ForestGreen}{$\bullet$} Accurate detection using a machine learning model\\ 
+		\hline
+		\textcolor{BrickRed}{$\bullet$} Video sample taken from an urban context\newline(e.g. street line markings) & \textcolor{ForestGreen}{$\bullet$} Video sample taken from an airport context\newline(e.g. taxiway line markings) \\
+		\hline
+		\textcolor{BrickRed}{$\bullet$} Command-line execution of testing script & \textcolor{ForestGreen}{$\bullet$} GUI execution for testing \\
+		\hline
+	\end{tabularx}
+	\caption{Mandatory and optional requirements for the IDP Project.}
+	\label{table:requirements-idp}
+\end{table}
+
+\section{Mark-Robotics}
+\label{sec:mark-robotics}
+
+\emph{Mark-Robotics} is a Munich based pre-seed start-up, thriving to develop the first \textbf{autonomous ground line marking robot} for airports. Founded on a first prototype, developed during the intensive two weeks TUM course Think.Make.Start. (TMS), the start-up project evolved. The company is run currently established by the three founders \emph{Johannes Frey}, \emph{Johannes Schaaf} and \emph{Johannes Münichsdorfer}.
+
+\chapter{Example Chapter: Research and Comparison}
+
+\section{Example Section: Comparison and Decision}
+\label{sec:comparison}
+
+As all three methods described above have strengths and weaknesses in their specific domain, it is clear that every method suits best for a concrete use case. In this section, I am going to compare Method A, B, and C with respect to the possibilities, difficulties, and restrictions in each one respectively. Table~\ref{table:comparison-method-a-b-c} shows this comparison in a structured way. As option A, the accessibility service works best for use cases where we need to track touch events and read out screen information, option B, which is about building a VPN service, is the best one in all cases where we need to track network usage. On the other hand, if we need to gather text or voice input from the user, method C, i.e. the InputMethod service, satisfies our needs. Considering what we want to achieve, or more closely what we actually need to track or recognize, is especially important in this domain. Though we could for sure implement all three methods simultaneously and ask our user to activate all of them, the chance of acceptance will be probably quite rare. Since tracking always involves handling a lot of sensitive private data, we should only use those parts that are really needed. Additionally, those cases are also the only ones, that will be, to some point, accepted by users.
+
+\newgeometry{top=12mm, bottom=24.8mm, left=40mm, right=21mm}
+\begin{table}
+	\fontsize{9pt}{13pt}\selectfont
+	\hspace{-5pt}
+	\vspace{2pt}
+	\begin{tabularx}{\textwidth + 5pt}{| @{\hspace{3pt}} c || @{\hspace{3pt}} M | @{\hspace{3pt}} M | @{\hspace{3pt}} M|}
+		\hline
+		\textbf{Tracking} & \textbf{Method A}\newline Accessibility service & \textbf{Method B}\newline VPN service & \textbf{Method C}\newline InputMethod (IME) service\\
+		\hline
+		\hline
+		Overview & 
+		Implementing an own accessibility service inside your application in order to retrieve the users window content as well as his or her touch events. This option furthermore enables the developer to take actions for the user. The service is running constantly in the background and needs to be manually activated by the user starting it for the first time. &
+		Building an custom VPN service into your application to capture and handle the network traffic on the device. This option enables to control the entire network traffic, accordingly every sent and received IP packet, to as well as from the phone. Furthermore the service allows to configure own DNS servers and to include only specific applications inside the VPN. Has to be manually activated on first usage. &
+		Implementing an own InputMethod service, i.e. a custom keyboard, allows to receive all input to the device by the user. This includes text and voice input as well as hardware key-events. We can therefore see what the user is typing and react to it accordingly. An InputMethod service has to be manually activated.\\
+		\hline
+		Possibilities & 
+		\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Retrieve the entire window content across third party applications as view hierarchy. This enables a developer to see whatever the user is currently viewing.\newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Recognize all touch events. \newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Take actions for the user (e.g. pressing a button, view, navigating to the home screen, etc.). &
+		\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Retrieve the entire network traffic with all contacted servers, etc..\newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Capture domain names with a custom DNS server.\newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Notice every time the device is contacting external servers.\newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} \emph{Per-App} VPN option, to include only specific applications inside the service. &
+		\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Receive the entire input to the device as well as all hardware key-events.\newline\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$+$} Potential benefit for the user if the IME service implements a great keyboard. 
+		\\
+		\hline
+		Difficulties & 
+		\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$--$} Hard to verify if the assumed context is actually correct. This means that e.g. the user might currently not visit a website if we detect an URL somewhere, but instead just views a message with an URL inside.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$--$} The user has to manually enable every accessibility service inside Android settings application in a complicated procedure.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$---$} Uncertain future of Google accepting apps which incorrectly use the accessibility service &
+		\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$-$} Difficult to verify if the assumed context is correct. This means that e.g. the user might currently not visit a website if we detect a connection to a specific \emph{WWW} URL, but instead an \gls{app} just downloads new images in the background. \textcolor{ForestGreen}{$\rightarrow$} Easier with \emph{Per-App} VPN.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$--$} Must handle every IP packet manually.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$-$} The user has to manually accept the VPN service on first usage, with a dialog inside the requesting application. &
+		\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$--$} Hard to verify if the assumed context is really correct. This means that e.g. the user might currently not visit a website if we detect an URL as input, but instead just writes a message to someone.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$-$} Developing a great keyboard is really expensive as users expect a lot.\newline\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$-$} The user has to manually enable the new IME service inside Android settings application.
+		\\
+		\hline
+		Restrictions & 
+		\textcolor{BrickRed}{\fontsize{12pt}{13pt}\boldmath$!!!$} Should not be used for tracking purposes! Google declares that an accessibility service should be only used for helping disabled or people in challenging environments. &
+		\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$!$} No restrictions specified, but since we handle sensitive private data this should be done very carefully! &
+		\textcolor{ForestGreen}{\fontsize{12pt}{13pt}\boldmath$!$} No restrictions specified, but since we handle sensitive private data this should be done very carefully!
+		\\
+		\hline 
+	\end{tabularx}
+	\caption{Comparison of Method A to C in respect to tracking on Android devices.}
+	\label{table:comparison-method-a-b-c}
+\end{table}
+\restoregeometry
+
+[...]
+
+Considering this new knowledge from the previous paragraph I decided to move the focus for the tracking detection to partner websites only, instead of also including partner applications. Hence, this work concentrates on tracking detection of partner websites only. Since most of the online shopping on Android devices mainly takes place inside a browser application, please see figure~\ref{fig:comparison-mia-browser-vs-apps-diagram}, e.g. Chrome~\footnote{\url{https://play.google.com/store/apps/details?id=com.android.chrome}}, Firefox~\footnote{\url{https://play.google.com/store/apps/details?id=org.mozilla.firefox}} or Samsung Internet Browser~\footnote{\url{https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser}}, the loss of partner \gls{apps} does not have a great impact anyway. To detect those websites we need to compare all three methods again more closely. An opening of a website normally involves a text input by the user, a network connection to a server on which the website is stored and finally a view that is displaying the content. Therefore, all three methods would work. With C we can detect the \emph{URL} input of the user through his keyboard and with B we can easily the detect the network connection. With method A, we can later gather information from the screen and, with that, detect the view and the content inside it, where the website is displayed. Since there is quite a low error rate detecting network traffic, both other domains have at least one big disadvantage, which leads to a higher error rate. Gathering \emph{URL} information with method A or C does not necessarily mean that the user is currently actually visiting a website, but could be also viewing e.g. an \emph{URL} inside a text message that was sent to him, or is entering text for a text message. It is hard to tell at which point the user is viewing the website since we only want to notify him in those cases. With method B we can almost entirely eliminate this problem since a network connection to a specific website in a browser application is normally only established if the user is effectively opening it. With this in mind, it is clear to see that option B, building a VPN service, satisfies our needs best. Including other advantages, like an easy and straightforward setup process as well as the ability to include only certain applications into our VPN service, qualifies it as an excellent choice. In the following chapter~\ref{ch:approach} I am going to describe my approach to use a VPN service for the presented scenario in much detail.
+
+[...]
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth]{./Images/mia_browser_vs_apps_diagram.png}
+	\end{center}
+	\caption{Comparison graph: "Considering online shopping on mobile devices, are you more likely to use a browser applications or custom shop applications?"~\cite[The survey question as well as the captions of the graph are translated to english in a contextual manner.]{nutzungeinesbrowsersshopeigenerapp_06.08.2019}}
+	\label{fig:comparison-mia-browser-vs-apps-diagram}
+\end{figure}
+
+\chapter{Approach: <<Approach Name>>}
+\label{ch:approach}
+
+\chapter{Evaluation}
+\label{ch:evaluation}
+
+\chapter{Future Work}
+\label{ch:future}
+
+\chapter{Conclusion}
+\label{ch:conclusion}
+
+\chapter{Appendixes}
+\label{ch:appendixes}
+
+\listoffigures % List of figures
+
+\printacronyms % List of acronyms (defined in Acronyms.tex file)
+
+\listoftables % List of tables
+
+\bibliography{./Ressourcen/bibliography_example.bib} % Add your .bib file here
+
+\end{document}
