@@ -5,7 +5,7 @@ import json
 LOWER_TRESHOLD_COLOR = 160
 MIN_POINTS_X_DISTANCE = 250
 MAX_POINTS_X_DISTANCE = 375
-MAX_X_DISTANCE_TO_LAST_X = 50
+MAX_X_DISTANCE_TO_LAST_X = 40
 COLOR_RANGE_RGBA = range(LOWER_TRESHOLD_COLOR+20, 255), range(LOWER_TRESHOLD_COLOR, 255), range(LOWER_TRESHOLD_COLOR, 255)
 
 def mean_sliding_window(array, initial_x, initial_y, width, height, window_range, previous_in_range):
