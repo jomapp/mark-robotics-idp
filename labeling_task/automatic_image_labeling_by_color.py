@@ -2,11 +2,10 @@ from PIL import Image
 import glob
 import json
 
-
 LOWER_TRESHOLD_COLOR = 160
-MIN_POINTS_X_DISTANCE = 200
+MIN_POINTS_X_DISTANCE = 250
 MAX_POINTS_X_DISTANCE = 375
-MAX_X_DISTANCE_TO_LAST_X = 65
+MAX_X_DISTANCE_TO_LAST_X = 50
 COLOR_RANGE_RGBA = range(LOWER_TRESHOLD_COLOR+20, 255), range(LOWER_TRESHOLD_COLOR, 255), range(LOWER_TRESHOLD_COLOR, 255)
 
 def mean_sliding_window(array, initial_x, initial_y, width, height, window_range, previous_in_range):
@@ -60,7 +59,7 @@ def run_labeling_by_color_for_image(file_name):
     last_added_pixel_index = (img_w, img_h)
 
     # iterate through image pixel by pixel bottom up
-    for y in range(img_h, 0, -100):
+    for y in range(img_h, 0, -50):
         for x in range(0, img_w, 1):
             last_x, last_y = last_added_pixel_index
             max_points_x_distance = MAX_POINTS_X_DISTANCE * y/img_h
@@ -88,7 +87,7 @@ def run_labeling_by_color_for_image(file_name):
                 previous_pixel_in_range = False
                 break
 
-        if y < 0.30 * img_h:
+        if y < 0.05 * img_h:
             break
 
     polygon_points = polygon_points_up
