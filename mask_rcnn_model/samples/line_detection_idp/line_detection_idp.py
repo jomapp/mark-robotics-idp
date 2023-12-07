@@ -33,6 +33,7 @@ import json
 import datetime
 import numpy as np
 import skimage.draw
+import glob
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -94,55 +95,72 @@ class LineDetectionDataset(utils.Dataset):
         dataset_dir = os.path.join(dataset_dir, subset)
 
         # Load annotations
-        # VGG Image Annotator (up to version 1.6) saves each image in the form:
-        # { 'filename': '28503151_5b5b7ec140_b.jpg',
-        #   'regions': {
-        #       '0': {
-        #           'region_attributes': {},
-        #           'shape_attributes': {
-        #               'all_points_x': [...],
-        #               'all_points_y': [...],
-        #               'name': 'polygon'}},
-        #       ... more regions ...
-        #   },
-        #   'size': 100202
+        # LabelMe saves each image annotation in the form:
+        # {
+        #   "version": "5.2.1",
+        #   "flags": {},
+        #   "shapes": [
+        #     {
+        #       "label": "Line",
+        #       "points": [
+        #         [
+        #           403.67346938775506,
+        #           1919.0
+        #         ],
+        #         [
+        #           402.44897959183663,
+        #           1871.020408163265
+        #         ],
+        #         [
+        #           420.0,
+        #           1820.0
+        #         ],
+        #         <--- ... CONTINUED ... --->
         # }
-        # We mostly care about the x and y coordinates of each region
-        # Note: In VIA 2.0, regions was changed from a dict to a list.
+        
+        annotationFiles = dataset_dir + '/*.json'
+        annotationFilesPlaths = glob.glob(annotationFiles)
+ 
+        for annotationFilePath in annotationFilesPlaths:
+            annotations = json.load(open(annotationFilePath))
+            annotations = list(annotations.values())  # don't need the dict keys
 
-        # TODO adjust this part to load the annotations correctly
+            # The VIA tool saves images in the JSON even if they don't have any
+            # annotations. Skip unannotated images.
+            annotations = [a for a in annotations if a['shapes']]
 
-        annotations = json.load(open(os.path.join(dataset_dir, "via_region_data.json")))
-        annotations = list(annotations.values())  # don't need the dict keys
+            # Add images
+            for a in annotations:
+                # Get the x, y coordinaets of points of the polygons that make up
+                # the outline of each object instance. These are stores in the
+                # shape (see json format above)
+                
+                polygons_x_y = a['points']
+                Xs,Ys = zip(*polygons_x_y)
 
-        # The VIA tool saves images in the JSON even if they don't have any
-        # annotations. Skip unannotated images.
-        annotations = [a for a in annotations if a['regions']]
+                unique_Xs = []
+                [unique_Xs.append(val) for val in Xs if val not in unique_Xs]
 
-        # Add images
-        for a in annotations:
-            # Get the x, y coordinaets of points of the polygons that make up
-            # the outline of each object instance. These are stores in the
-            # shape_attributes (see json format above)
-            # The if condition is needed to support VIA versions 1.x and 2.x.
-            if type(a['regions']) is dict:
-                polygons = [r['shape_attributes'] for r in a['regions'].values()]
-            else:
-                polygons = [r['shape_attributes'] for r in a['regions']] 
+                unique_Ys = []
+                [unique_Ys.append(val) for val in Ys if val not in unique_Ys]
 
-            # load_mask() needs the image size to convert polygons to masks.
-            # Unfortunately, VIA doesn't include it in JSON, so we must read
-            # the image. This is only managable since the dataset is tiny.
-            image_path = os.path.join(dataset_dir, a['filename'])
-            image = skimage.io.imread(image_path)
-            height, width = image.shape[:2]
+                polygons = []
+                polygons['all_points_x'] = unique_Xs
+                polygons['all_points_y'] = unique_Ys
 
-            self.add_image(
-                "balloon",
-                image_id=a['filename'],  # use file name as a unique image id
-                path=image_path,
-                width=width, height=height,
-                polygons=polygons)
+                # load_mask() needs the image size to convert polygons to masks.
+                # Unfortunately, VIA doesn't include it in JSON, so we must read
+                # the image. This is only managable since the dataset is tiny.
+                image_path = os.path.join(dataset_dir, a['imagePath'])
+                # image = skimage.io.imread(image_path)
+                # height, width = image.shape[:2]
+
+                self.add_image(
+                    "line",
+                    image_id=a['imagePath'],  # use file name as a unique image id
+                    path=image_path,
+                    width=a['imageWidth'], height=a['imageHeight'],
+                    polygons=polygons)
 
     def load_mask(self, image_id):
         """Generate instance masks for an image.
@@ -153,14 +171,13 @@ class LineDetectionDataset(utils.Dataset):
         """
         # If not a balloon dataset image, delegate to parent class.
         image_info = self.image_info[image_id]
-        if image_info["source"] != "balloon":
+        if image_info["source"] != "line":
             return super(self.__class__, self).load_mask(image_id)
 
         # Convert polygons to a bitmap mask of shape
         # [height, width, instance_count]
         info = self.image_info[image_id]
-        mask = np.zeros([info["height"], info["width"], len(info["polygons"])],
-                        dtype=np.uint8)
+        mask = np.zeros([info["height"], info["width"], len(info["polygons"])], dtype=np.uint8)
         for i, p in enumerate(info["polygons"]):
             # Get indexes of pixels inside the polygon and set them to 1
             rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
