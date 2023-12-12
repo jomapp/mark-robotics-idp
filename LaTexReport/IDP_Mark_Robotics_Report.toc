@@ -8,18 +8,30 @@
 \contentsline {section}{\numberline {2.3}Requirements}{7}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Mark-Robotics}{7}{section.2.4}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {3}Example Chapter: Research and Comparison}{8}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Example Section: Comparison and Decision}{8}{section.3.1}%
+\contentsline {chapter}{\numberline {3}Related Work}{8}{chapter.3}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {4}Approach: <<Approach Name>>}{12}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Approach}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overview}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Training Pipeline}{9}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Image Capturing}{9}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Image Labeling}{9}{subsection.4.2.2}%
+\contentsline {subsubsection}{\nonumberline Automatic Pre-Labeling}{9}{subsubsection*.6}%
+\contentsline {subsubsection}{\nonumberline Manual Labeling}{9}{subsubsection*.8}%
+\contentsline {subsection}{\numberline {4.2.3}Erasing Sensitive Information}{9}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Preparing Images and Annotations for Training}{9}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Training using Mask R-CNN}{9}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Results}{9}{section.4.3}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {5}Evaluation}{13}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Evaluation}{10}{chapter.5}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {6}Future Work}{14}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Future Work}{11}{chapter.6}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {7}Conclusion}{15}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Conclusion}{12}{chapter.7}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {8}Appendixes}{16}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Example Chapter: Research and Comparison}{13}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Example Section: Comparison and Decision}{13}{section.8.1}%
 \vspace {-10pt}
-\contentsline {chapter}{\numberline {9}Bibliography}{19}{chapter.9}%
+\contentsline {chapter}{\numberline {9}Appendixes}{17}{chapter.9}%
+\vspace {-10pt}
+\contentsline {chapter}{\numberline {10}Bibliography}{20}{chapter.10}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
