@@ -15,8 +15,8 @@
 \contentsline {section}{\numberline {4.2}Training Pipeline}{9}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Image Capturing}{9}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Image Labeling}{9}{subsection.4.2.2}%
-\contentsline {subsubsection}{\nonumberline Automatic Pre-Labeling}{9}{subsubsection*.6}%
-\contentsline {subsubsection}{\nonumberline Manual Labeling}{9}{subsubsection*.8}%
+\contentsline {subsubsection}{\nonumberline Automatic Pre-Labeling}{9}{subsubsection*.4}%
+\contentsline {subsubsection}{\nonumberline Manual Labeling}{9}{subsubsection*.6}%
 \contentsline {subsection}{\numberline {4.2.3}Erasing Sensitive Information}{9}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Preparing Images and Annotations for Training}{9}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Training using Mask R-CNN}{9}{subsection.4.2.5}%
